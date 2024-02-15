@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
 import "./App.css";
 import Pizza from "./components/pizza";
 import pizzaData from "../public/data.js";
+
 
 const Header = () => {
   return (
@@ -40,14 +42,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       {/* TODO: Check why no footer is being rendered */}
-      {isOpen ? (
-        <div className="order">
-          <p>
-            We're open intil {closingTime}:00 PM. Come visit us or order online.
-          </p>
-          <button className="btn">Order</button>
-        </div>
-      ) : (
+      {isOpen ? <Order openingTime={openingTime}/> : (
         <div className="order">
           <p>
             We are happy to serve you from {openingTime}:00 AM to {closingTime}
@@ -58,6 +53,17 @@ const Footer = () => {
     </footer>
   );
 };
+
+function Order(props) {
+  return (
+    <div className="order">
+      <p>
+        We're open intil {props.openingTime}:00 PM. Come visit us or order online.
+      </p>
+      <button className="btn">Order</button>
+    </div>
+  );
+}
 function App() {
   return (
     <div className="container">
