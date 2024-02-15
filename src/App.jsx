@@ -40,12 +40,19 @@ const Footer = () => {
   return (
     <footer className="footer">
       {/* TODO: Check why no footer is being rendered */}
-      {isOpen && (
+      {isOpen ? (
         <div className="order">
           <p>
             We're open intil {closingTime}:00 PM. Come visit us or order online.
           </p>
           <button className="btn">Order</button>
+        </div>
+      ) : (
+        <div className="order">
+          <p>
+            We are happy to serve you from {openingTime}:00 AM to {closingTime}
+            :00 PM
+          </p>
         </div>
       )}
     </footer>
